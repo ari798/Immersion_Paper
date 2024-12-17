@@ -1,15 +1,15 @@
 %% load in data in half
 addpath(genpath("C:\Users\ari798\Documents\GitHub")) %laptop
 %addpath(genpath("C:\Users\somlab\Documents\BCI")) % work desktop
-session_path = 'T:\SessionData\BCI02\MotorExperiments\BCI02.data.00317'; %317; 331; 333
-%session_path = 'T:\SessionData\CRS08\MotorExperiments\CRS08Lab.data.00082';%64; 82
+%session_path = 'T:\SessionData\BCI02\MotorExperiments\BCI02.data.00333'; %317; 331; 333
+session_path = 'T:\SessionData\CRS08\MotorExperiments\CRS08Lab.data.00082';%64; 82
 all_set_files = dir(fullfile(session_path, '*.Set*.bin'));
 pat = ".Set" + digitsPattern(4) + ".";
-exp_sets_TV = [37:39]; exp_sets_VR = [17:19]; session = 317; type = 'obs';task = 'grasp & carry'; subject = 'C1';
+%exp_sets_TV = [37:39]; exp_sets_VR = [17:19]; session = 317; type = 'obs';task = 'grasp & carry'; subject = 'C1';
 %exp_sets_TV = [1:2]; exp_sets_VR = [10:11]; session = 331; type = 'obs'; task = 'grasp & carry'; subject = 'C1';
 %exp_sets_TV = [1:3]; exp_sets_VR = [11:13]; session = 333; type = 'obs'; task = 'grasp & carry'; subject = 'C1';
 %exp_sets_TV = [13:14]; exp_sets_VR = [5:6]; session = 64; type = 'obs'; task = 'grasp & carry'; subject = 'P4';
-%exp_sets_TV = [1:2]; exp_sets_VR = [11:12]; session = 82; type = 'obs'; task = 'grasp & carry'; subject = 'P4';
+exp_sets_TV = [1:2]; exp_sets_VR = [11:12]; session = 82; type = 'obs'; task = 'grasp & carry'; subject = 'P4';
 
 % load in TV environment
 ct = 1; exp_set_files = {};
@@ -53,6 +53,13 @@ VR_Data = prepData('files',filepath_VR);
 
 %VR_Data_1 = prepData('files',filepath_VR(1:length(filepath_VR)/2));
 %VR_Data_2 = prepData('files',filepath_VR((length(filepath_VR)/2)+1:length(filepath_VR)));
+
+% load split data
+
+TV_Data_1 = prepData('files',filepath_TV(1:length(filepath_TV)/2));
+TV_Data_2 = prepData('files',filepath_TV((length(filepath_TV)/2)+1:length(filepath_TV)));
+VR_Data_1 = prepData('files',filepath_VR(1:length(filepath_VR)/2));
+VR_Data_2 = prepData('files',filepath_VR((length(filepath_VR)/2)+1:length(filepath_VR)));
 
 %% identify good channels
 
